@@ -5,6 +5,8 @@ const state = reactive({
   nfts: [],
   used: [],
   result: '',
+  streak: 0,
+  best: 0,
 })
 
 function getNfts() {
@@ -19,6 +21,7 @@ function getNfts() {
 const randomNfts = computed(() => state.nfts.filter(nft => !state.used.includes(nft.id)).slice(0, 2))
 const correctAnswer = computed(() => Number(randomNfts.value[0].last_sale.total_price) > Number(randomNfts.value[1].last_sale.total_price) ? randomNfts.value[0].id : randomNfts.value[1].id)
 const result = computed(() => state.result)
+const bestStreak = computed(() => state.streak > state.best ? state.streak : state.best)
 
 function checkAnswer(id) {
   if (state.result) {
@@ -26,8 +29,13 @@ function checkAnswer(id) {
   }
 
   if (id == correctAnswer.value) {
+    state.streak++
     state.result = 'correct'
   } else {
+    if (state.streak > state.best) {
+      state.best = state.streak
+    }
+    state.streak = 0
     state.result = 'incorrect'
   }
 }
@@ -62,5 +70,9 @@ getNfts()
         try again
       </button>
     </template>
+  </div>
+  <div class="fixed left-0 bottom-0 p-4 text-xl">
+    <p>streak: {{ state.streak }}</p>
+    <p>best: {{ bestStreak }}</p>
   </div>
 </template>
