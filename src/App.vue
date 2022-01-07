@@ -75,4 +75,5 @@ getNfts()
     <p>streak: {{ state.streak }}</p>
     <p>best: {{ bestStreak }}</p>
   </div>
+  <a href="https://github.com/tylerpetz" target="_blank" class="fixed right-0 bottom-0 p-4 text-lg">made by tyler</a>
 </template>
