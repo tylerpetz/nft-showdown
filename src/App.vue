@@ -59,7 +59,7 @@ getNfts()
       <button v-for="nft in randomNfts" :index="nft.id" @click="checkAnswer(nft.id)" class="p-4 bg-gray-200 flex flex-col items-center space-y-2">
         <p>{{ nft.name }}</p>
         <img :src="nft.image_preview_url" :alt="nft.name" width="300"/>
-        <p v-if="result">last sold for {{ Number(nft.last_sale.total_price) / 1000000000000000000 }} ETH</p>
+        <p v-if="result">last sold for {{ Number(nft.last_sale.total_price) / 1000000000000000000 }} ETH (~${{  (Number(nft.last_sale.total_price) / 1000000000000000000 * Number(nft.last_sale.payment_token.usd_price)).toFixed(2) }})  </p>
       </button>
     </div>
     <template v-if="result">
