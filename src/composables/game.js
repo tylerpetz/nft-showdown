@@ -1,4 +1,5 @@
 import { reactive, computed } from 'vue'
+import { useOpenSea } from './opensea'
 
 const state = reactive({
   nfts: [],
@@ -9,12 +10,7 @@ const state = reactive({
 })
 
 export function getNfts() {
-  fetch('https://api.opensea.io/api/v1/assets?order_by=sale_date&offset=0&limit=50', { method: 'GET' })
-    .then(async (response) => {
-      response = await response.json()
-      state.nfts = response.assets.filter(asset => asset.name && asset.image_preview_url)
-    })
-    .catch(err => console.error(err))
+  useOpenSea().then(nfts => state.nfts = nfts)
 }
 
 export function checkAnswer(id) {
