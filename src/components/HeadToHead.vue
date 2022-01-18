@@ -18,8 +18,8 @@ import { checkAnswer, storeNfts, randomNfts, result, currentStreak, bestStreak }
       try again
     </button>
   </template>
-  <div class="fixed left-0 bottom-0 p-4 text-xl">
-    <p>streak: {{ currentStreak }}</p>
-    <p>best: {{ bestStreak }}</p>
+  <div class="fixed flex flex-col items-start left-0 bottom-0 p-4 text-xl">
+    <span>streak: {{ currentStreak }}</span>
+    <span>best: {{ bestStreak }}</span>
   </div>
 </template>
