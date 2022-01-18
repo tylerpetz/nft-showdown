@@ -1,7 +1,5 @@
 <script setup>
 import HeadToHead from './components/HeadToHead.vue'
-import { getNfts } from './composables/game'
-getNfts()
 </script>
 
 <template>

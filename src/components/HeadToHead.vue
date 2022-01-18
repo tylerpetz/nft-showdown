@@ -1,5 +1,7 @@
 <script setup>
-import { checkAnswer, storeNfts, randomNfts, result, currentStreak, bestStreak } from '../composables/game'
+import { getNfts, checkAnswer, storeNfts, randomNfts, result, currentStreak, bestStreak } from '../composables/head2head'
+
+getNfts()
 </script>
 
 <template>
